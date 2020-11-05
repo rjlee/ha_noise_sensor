@@ -22,7 +22,9 @@ chmod u+x rtsp-simple-server
 cat <<STREAMFILE
 #!/bin/bash
 
-ffmpeg -re -ac 1 -f alsa -i $MICROPHONE_DEVICE -f rtsp -rtsp_transport tcp rtsp://localhost:8554/live
+$INSTALL_DIR/rtsp-simple-server >/dev/null 2>&1 &
+sleep 20
+ffmpeg -re -ac 1 -f alsa -i $MICROPHONE_DEVICE -f rtsp -rtsp_transport tcp rtsp://localhost:8554/live </dev/null > /dev/null 2>&1 &
 STREAMFILE
 ) > ./stream.sh
 chmod u+x ./stream.sh
@@ -33,9 +35,7 @@ chmod u+x ./stream.sh
 cat <<INITFILE
 #!/bin/bash
 
-nohup $INSTALL_DIR/rtsp-simple-server >/dev/null 2>&1 &
-sleep 2
-nohup $INSTALL_DIR/stream.sh >/dev/null 2>&1 &
+$INSTALL_DIR/stream.sh
 exit 0
 INITFILE
 ) > /etc/rc.local
@@ -50,5 +50,3 @@ exit 0
 UPDATEFILE
 ) > /etc/cron.daily/auto-update
 chmod u+x /etc/cron.daily/auto-update
-
-exit 0
