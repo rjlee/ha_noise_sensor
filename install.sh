@@ -1,8 +1,6 @@
 #!/bin/bash
 
 INSTALL_DIR=/root/ffmpeg_noise
-IP=192.168.8.10
-PORT=1234
 MICROPHONE_DEVICE=hw:1,0
 RTSP_VERSION=0.12.0
 RTSP_ARCH="linux_arm7"
@@ -24,7 +22,7 @@ chmod u+x rtsp-simple-server
 cat <<STREAMFILE
 #!/bin/bash
 
-ffmpeg -ar 8000 -ac 1 -f alsa -i $MICROPHONE_DEVICE -acodec mp2 -b:a 128k -f rtp rtp://$IP:$PORT
+ffmpeg -re -ac 1 -f alsa -i $MICROPHONE_DEVICE -f rtsp -rtsp_transport tcp rtsp://localhost:8554/live
 STREAMFILE
 ) > ./stream.sh
 chmod u+x ./stream.sh
