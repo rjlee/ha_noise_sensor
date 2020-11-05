@@ -17,14 +17,16 @@ RTSP_VERSION=0.12.0
 RTSP_ARCH="linux_arm7"
 ```
 
-INSTALL_DIR = The directory that ha_noise_sensor will be installed into
-MICROPHONE_DEVICE = The alsa address of your USB microphone (see http://www.voxforge.org/home/docs/faq/faq/linux-how-to-determine-your-audio-cards-or-usb-mics-maximum-sampling-rate for details)
-RTSP_VERSION = The RTSP server version to install from https://github.com/aler9/rtsp-simple-server
-RTSP_ARCH = The CPU architecture version to install from https://github.com/aler9/rtsp-simple-server
+* `INSTALL_DIR` = The directory that ha_noise_sensor will be installed into
+* `MICROPHONE_DEVICE` = The alsa address of your USB microphone (see http://www.voxforge.org/home/docs/faq/faq/linux-how-to-determine-your-audio-cards-or-usb-mics-maximum-sampling-rate for details)
+* `RTSP_VERSION` = The RTSP server version to install from https://github.com/aler9/rtsp-simple-server
+* `RTSP_ARCH` = The CPU architecture version to install from https://github.com/aler9/rtsp-simple-server
 
 Once configuration options have been set, execute:
 
 `chmod u+x ./install.sh && ./install.sh`
+
+The sensor startup has a delay of 20 seconds before starting the audio stream.
 
 ## Home Assistant Configuration
 
