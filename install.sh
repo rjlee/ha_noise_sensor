@@ -8,7 +8,7 @@ RTSP_ARCH="linux_arm7"
 # Install package updates & ffmpeg
 apt-get update
 apt-get dist-upgrade -y
-apt-get install ffmpeg
+apt-get install ffmpeg git screen -y
 
 mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
@@ -50,3 +50,8 @@ exit 0
 UPDATEFILE
 ) > /etc/cron.daily/auto-update
 chmod u+x /etc/cron.daily/auto-update
+
+# Compile respeaker2 driver
+git clone https://github.com/respeaker/seeed-voicecard.git
+cd seeed-voicecard
+./install.sh --compat-kernel
