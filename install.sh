@@ -55,3 +55,6 @@ chmod u+x /etc/cron.daily/auto-update
 git clone https://github.com/respeaker/seeed-voicecard.git
 cd seeed-voicecard
 ./install.sh --compat-kernel
+
+# Prevent kernel updates
+apt-mark hold linux-generic linux-image-generic linux-headers-generic
