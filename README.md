@@ -1,6 +1,18 @@
 # ha_noise_sensor
 
-A raspberry pi noise sensor for use with home assistant
+A raspberry pi noise sensor for use with home assistant via [ffmpeg_noise](https://www.home-assistant.io/integrations/ffmpeg_noise/).
+
+## How does it work ?
+
+The noise sensor uses a [Raspberry Pi Zero WH](https://thepihut.com/products/raspberry-pi-zero-wh-with-pre-soldered-header) and a [Respeaker 2-Mic Hat](https://wiki.seeedstudio.com/ReSpeaker_2_Mics_Pi_HAT/) as the hardware, with [ffmpeg](https://ffmpeg.org/) and [rtsp-simple-server](https://github.com/aler9/rtsp-simple-server)streaming audio to the ffmpeg_noise home assistant integration.
+
+The `install.sh` script configures a *fresh* Raspberry Pi with a [Raspberry Pi OS Lite](https://www.raspberrypi.org/downloads/raspberry-pi-os/) to automattically start streaming a rtsp audio stream to home assistant on boot.
+
+Caveat: You don't need to use a Respeaker Hat, however noiseless audio capture on the raspberry pi seems to be patchy at best using a USB microphone.
+
+## What does it look like ?
+
+
 
 ## Install
 
@@ -26,6 +38,8 @@ Once configuration options have been set, execute:
 
 `chmod u+x ./install.sh && ./install.sh`
 
+Then reboot.
+
 The sensor startup has a delay of 20 seconds before starting the audio stream.
 
 ## Home Assistant Configuration
@@ -44,3 +58,7 @@ binary_sensor:
 ```
 
 Replacing `192.168.8.10` with the static IP address of your Pi.
+
+## References
+
+* https://www.home-assistant.io/blog/2017/02/03/babyphone/
