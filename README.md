@@ -12,7 +12,8 @@ Caveat: You don't need to use a Respeaker Hat, however noiseless audio capture o
 
 ## What does it look like ?
 
-
+<img src="/images/bare.jpg" width="400">
+<img src="/images/case.jpg" width="400">
 
 ## Install
 
