@@ -3,7 +3,7 @@
 INSTALL_DIR=/root/ffmpeg_noise
 MICROPHONE_DEVICE=hw:1,0
 RTSP_VERSION=0.12.0
-RTSP_ARCH="linux_arm7"
+RTSP_ARCH="linux_arm6"
 
 # Install package updates & ffmpeg
 apt-get update
@@ -24,7 +24,7 @@ cat <<STREAMFILE
 
 $INSTALL_DIR/rtsp-simple-server >/dev/null 2>&1 &
 sleep 20
-ffmpeg -re -ac 1 -f alsa -i $MICROPHONE_DEVICE -f rtsp -rtsp_transport tcp rtsp://localhost:8554/live </dev/null > /dev/null 2>&1 &
+arecord -f cd -D$MICROPHONE_DEVICE | ffmpeg -re -i - -f rtsp -rtsp_transport tcp rtsp://localhost:8554/live </dev/null > /dev/null 2>&1 &
 STREAMFILE
 ) > ./stream.sh
 chmod u+x ./stream.sh
@@ -57,4 +57,4 @@ cd seeed-voicecard
 ./install.sh --compat-kernel
 
 # Prevent kernel updates
-apt-mark hold linux-generic linux-image-generic linux-headers-generic
+apt-mark hold raspberrypi-kernel raspberrypi-kernel-headers
