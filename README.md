@@ -26,13 +26,13 @@ Copy the install script onto the Pi and then review the configuration options:
 INSTALL_DIR=/root/ffmpeg_noise
 MICROPHONE_DEVICE=hw:1,0
 RTSP_VERSION=0.12.0
-RTSP_ARCH="linux_arm7"
+RTSP_ARCH="linux_arm6"
 ```
 
 * `INSTALL_DIR` = The directory that ha_noise_sensor will be installed into
 * `MICROPHONE_DEVICE` = The alsa address of your USB microphone (see http://www.voxforge.org/home/docs/faq/faq/linux-how-to-determine-your-audio-cards-or-usb-mics-maximum-sampling-rate for details)
 * `RTSP_VERSION` = The RTSP server version to install from https://github.com/aler9/rtsp-simple-server
-* `RTSP_ARCH` = The CPU architecture version to install from https://github.com/aler9/rtsp-simple-server
+* `RTSP_ARCH` = The CPU architecture version to install from https://github.com/aler9/rtsp-simple-server.  Use arm7 for Pi 3/4
 
 Once configuration options have been set, execute:
 
