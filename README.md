@@ -4,11 +4,11 @@ A raspberry pi noise sensor for use with home assistant via [ffmpeg_noise](https
 
 ## How does it work ?
 
-The noise sensor uses a [Raspberry Pi Zero WH](https://thepihut.com/products/raspberry-pi-zero-wh-with-pre-soldered-header) and a [Respeaker 2-Mic Hat](https://wiki.seeedstudio.com/ReSpeaker_2_Mics_Pi_HAT/) as the hardware, with [ffmpeg](https://ffmpeg.org/) and [rtsp-simple-server](https://github.com/aler9/rtsp-simple-server)streaming audio to the ffmpeg_noise home assistant integration.
+The noise sensor uses a [Raspberry Pi Zero WH](https://thepihut.com/products/raspberry-pi-zero-wh-with-pre-soldered-header) and a [Respeaker 2-Mic Hat](https://wiki.seeedstudio.com/ReSpeaker_2_Mics_Pi_HAT/) as the hardware, with [ffmpeg](https://ffmpeg.org/) and [rtsp-simple-server](https://github.com/aler9/rtsp-simple-server) streaming audio to the [ffmpeg_noise](https://www.home-assistant.io/integrations/ffmpeg_noise/) home assistant integration.
 
-The `install.sh` script configures a *fresh* Raspberry Pi with a [Raspberry Pi OS Lite](https://www.raspberrypi.org/downloads/raspberry-pi-os/) to automattically start streaming a rtsp audio stream to home assistant on boot.
+The `install.sh` script configures a *fresh* Raspberry Pi with a [Raspberry Pi OS Lite](https://www.raspberrypi.org/downloads/raspberry-pi-os/) to automatically start streaming a rtsp audio stream to home assistant on boot.
 
-Caveat: You don't need to use a Respeaker Hat, however noiseless audio capture on the raspberry pi seems to be patchy at best using a USB microphone.
+*Caveat:* You don't need to use a Respeaker Hat, however noiseless audio capture on the raspberry pi seems to be patchy at best using a USB microphone.
 
 ## What does it look like ?
 
@@ -53,12 +53,14 @@ binary_sensor:
     name: "Noise sensor"
     input: rtsp://192.168.8.10:8554/live
     initial_state: true
-    duration: 3
-    reset: 15
-    peak: -34
+    duration: 1
+    reset: 5
+    peak: -27
 ```
 
 Replacing `192.168.8.10` with the static IP address of your Pi.
+
+Details on the `peak` range value and other options for the sensor can be found at [ffmpeg_noise](https://www.home-assistant.io/integrations/ffmpeg_noise/).
 
 ## It's not working, help !
 
