@@ -60,6 +60,17 @@ binary_sensor:
 
 Replacing `192.168.8.10` with the static IP address of your Pi.
 
+## It's not working, help !
+
+Test the stream with [VLC](https://www.videolan.org/vlc/index.html) rtsp://$YOURIP:8554/live
+
+Look at `/root/ffmpeg_noise/stream.sh`.  It executes two processes:
+
+* `rtsp-simple-server` - this needs to be running before the ffmpeg stream
+* `arecord ...| ffmmpeg ...` - this streams to rtsp-simple-server
+
+You can try these commands on the command line to identify any issues.
+
 ## References
 
 * https://www.home-assistant.io/blog/2017/02/03/babyphone/
