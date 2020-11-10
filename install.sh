@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Configuration
 INSTALL_DIR=/root/ffmpeg_noise
 MICROPHONE_DEVICE=hw:1,0
 RTSP_VERSION=0.12.0
@@ -10,6 +11,7 @@ apt-get update
 apt-get dist-upgrade -y
 apt-get install ffmpeg git screen -y
 
+# Install rtsp-simple-server
 mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
 RTSP_RELEASE="rtsp-simple-server_v${RTSP_VERSION}_${RTSP_ARCH}"
@@ -51,10 +53,10 @@ UPDATEFILE
 ) > /etc/cron.daily/auto-update
 chmod u+x /etc/cron.daily/auto-update
 
-# Compile respeaker2 driver
+# Compile respeaker2 driver - only needed if using a respeaker Pi hat
 git clone https://github.com/respeaker/seeed-voicecard.git
 cd seeed-voicecard
 ./install.sh --compat-kernel
 
-# Prevent kernel updates
+# Prevent kernel updates - only needed if using a respeaker Pi hat
 apt-mark hold raspberrypi-kernel raspberrypi-kernel-headers
