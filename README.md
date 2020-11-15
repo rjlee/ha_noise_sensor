@@ -52,6 +52,7 @@ binary_sensor:
   - platform: ffmpeg_noise
     name: "Noise sensor"
     input: rtsp://192.168.8.10:8554/live
+    extra_arguments: -nostats
     initial_state: true
     duration: 1
     reset: 5
@@ -72,6 +73,8 @@ Look at `/root/ffmpeg_noise/stream.sh`.  It executes two processes:
 * `arecord ...| ffmmpeg ...` - this streams to rtsp-simple-server
 
 You can try these commands on the command line to identify any issues.
+
+If the noise sensor becomes unresponsive, make sure you have `extra_arguments: -nostats` in the configuration, see [Issue 32](https://github.com/home-assistant-libs/ha-ffmpeg/issues/32#issuecomment-727569153) for details.
 
 ## References
 
