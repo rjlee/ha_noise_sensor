@@ -58,5 +58,8 @@ git clone https://github.com/respeaker/seeed-voicecard.git
 cd seeed-voicecard
 ./install.sh --compat-kernel
 
+# Add cron entry in case the sensor dies
+ crontab -l | grep -v -F "$INSTALL_DIR/stream.sh" ; echo "*/1 * * * * $INSTALL_DIR/stream.sh" ) | crontab -
+
 # Prevent kernel updates - only needed if using a respeaker Pi hat
 apt-mark hold raspberrypi-kernel raspberrypi-kernel-headers
