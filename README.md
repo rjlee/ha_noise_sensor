@@ -12,7 +12,7 @@ The `install.sh` script configures a *fresh* Raspberry Pi with a [Raspberry Pi O
 
 ## What does it look like ?
 
-<img src="/images/sensor.jpg" width="400">
+<img src="/images/sensor.png" width="400">
 <img src="/images/case.jpg" width="400">
 
 ## Install
